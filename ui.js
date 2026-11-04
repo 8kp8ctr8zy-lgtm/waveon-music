@@ -1,0 +1,1 @@
+(()=>{const links=[...document.querySelectorAll('.top-nav a')];function active(){const hash=location.hash||'#discover';for(const a of links){const selected=a.getAttribute('href')===hash;a.classList.toggle('is-active',selected);if(selected)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}}window.addEventListener('hashchange',active);active()})();
