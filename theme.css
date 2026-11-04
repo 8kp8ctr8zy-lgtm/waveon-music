@@ -27,3 +27,18 @@
 .top-nav a:focus-visible,.wave-now-actions button:focus-visible{outline:2px solid #a4ffcb;outline-offset:3px}
 @media(max-width:430px){#indie-embed{padding:13px!important}.wave-now-cover{width:60px;height:60px;border-radius:12px}.wave-now-info{gap:10px}.wave-now-detail strong{font-size:16px!important}.wave-now-actions button{padding:11px 6px!important;font-size:12px!important}}
 @media(prefers-reduced-motion:reduce){.indie-card-wrap,.top-nav a{transition:none!important}}
+
+/* WAVEON neon player */
+#indie-embed{background:linear-gradient(135deg,#09291d,#020b08)!important;border:1px solid #42f3a0!important;box-shadow:0 0 25px #21e68c33!important;border-radius:25px!important}
+#indie-embed .wave-now-info{display:flex!important;align-items:center!important;gap:13px!important;min-width:0!important}
+#indie-embed .wave-now-cover{width:90px!important;height:90px!important;min-width:90px!important;max-width:90px!important;flex:0 0 90px!important;overflow:hidden!important;border-radius:16px!important;border:1px solid #43e99b!important}
+#indie-embed .wave-now-cover img{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:cover!important}
+#indie-embed .wave-now-detail{flex:1!important;min-width:0!important;overflow:hidden!important}
+#indie-embed .wave-now-detail strong{font-size:20px!important;color:white!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+#indie-embed .wave-now-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+#indie-embed .wave-now-actions button{border-radius:16px!important;padding:13px 8px!important}
+#indie-embed .wave-now-actions button:first-child{background:linear-gradient(120deg,#a9ffd0,#38f09b)!important;color:#06291a!important;box-shadow:0 0 17px #3eff9a44!important}
+#indie-embed iframe{border-radius:17px!important;overflow:hidden!important}
+.indie-categories button.active{box-shadow:0 0 23px #32ff9677!important}
+.top-nav{border-color:#398e60!important;box-shadow:0 0 24px #21e48b29,0 15px 30px #0009!important}
+@media(max-width:430px){#indie-embed .wave-now-cover{width:74px!important;height:74px!important;min-width:74px!important;max-width:74px!important;flex-basis:74px!important}#indie-embed .wave-now-detail strong{font-size:16px!important}}
