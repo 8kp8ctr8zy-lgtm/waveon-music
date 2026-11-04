@@ -1,1 +1,17 @@
-const HOSTS=['https://de1.api.radio-browser.info','https://nl1.api.radio-browser.info','https://at1.api.radio-browser.info'];exports.handler=async(event)=>{const tag=String(event.queryStringParameters?.tag||'pop').slice(0,35);const query=new URLSearchParams({tag,hidebroken:'true',limit:'45',order:'votes',reverse:'true'});const checks=HOSTS.map(async host=>{const response=await fetch(host+'/json/stations/search?'+query,{headers:{'User-Agent':'WAVEONMusic/1.0','Accept':'application/json'},signal:AbortSignal.timeout(8500)});if(!response.ok)throw Error('radio host '+response.status);const rows=await response.json();if(!Array.isArray(rows))throw Error('Invalid data');const stations=rows.filter(s=>s.name&&s.url_resolved&&/^https:\/\//i.test(s.url_resolved)).slice(0,25).map(s=>({stationuuid:s.stationuuid,name:s.name,url_resolved:s.url_resolved,favicon:s.favicon,country:s.country,tags:s.tags}));if(!stations.length)throw Error('No stations');return stations});try{const stations=await Promise.any(checks);return{statusCode:200,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'public, max-age=120'},body:JSON.stringify(stations)}}catch(e){return{statusCode:503,headers:{'Content-Type':'application/json'},body:JSON.stringify({error:'Radio directory temporarily unavailable'})}}};
+const HOSTS=['https://de1.api.radio-browser.info','https://nl1.api.radio-browser.info','https://at1.api.radio-browser.info'];
+const headers={'User-Agent':'WAVEONMusic/2.0','Accept':'application/json'};
+exports.handler=async(event)=>{
+ const tag=String(event.queryStringParameters?.tag||'pop').slice(0,35);
+ const tags=[tag,...(tag==='remix'?['dance','electronic','pop']:[])];
+ const attempts=[];
+ for(const term of tags){for(const host of HOSTS){attempts.push((async()=>{
+  const query=new URLSearchParams({tag:term,hidebroken:'true',limit:'60',order:'votes',reverse:'true'});
+  const res=await fetch(host+'/json/stations/search?'+query,{headers,signal:AbortSignal.timeout(7000)});
+  if(!res.ok)throw Error('HTTP '+res.status);
+  const rows=await res.json();if(!Array.isArray(rows))throw Error('Invalid station list');
+  const stations=rows.filter(x=>x.name&&x.url_resolved&&/^https:\/\//i.test(x.url_resolved)).map(x=>({stationuuid:x.stationuuid||x.url_resolved,name:x.name,url_resolved:x.url_resolved,favicon:x.favicon,country:x.country,tags:x.tags,codec:x.codec}));
+  if(!stations.length)throw Error('Empty stations');return stations.slice(0,35);
+ })());}}
+ try{const stations=await Promise.any(attempts);return{statusCode:200,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'public, max-age=60'},body:JSON.stringify(stations)}}
+ catch(e){return{statusCode:503,headers:{'Content-Type':'application/json; charset=utf-8'},body:JSON.stringify({error:'Radio directory temporarily unavailable'})}}
+};
