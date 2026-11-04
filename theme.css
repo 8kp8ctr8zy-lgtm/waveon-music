@@ -1,0 +1,29 @@
+/* WAVEON · refined listening experience */
+#indie-embed{position:relative;overflow:hidden;padding:18px!important;background:linear-gradient(145deg,#123c2a,#071910 75%)!important;border:1px solid #397f57!important;border-radius:24px!important}
+#indie-embed:before{content:"";position:absolute;top:-100px;right:-70px;width:240px;height:240px;border-radius:50%;background:#43ff9a1a;filter:blur(40px);pointer-events:none}
+#indie-embed .indie-embed-heading{display:flex!important;flex-direction:column;align-items:stretch;gap:16px;margin:0 0 14px!important;position:relative}
+.wave-now-info{display:flex;align-items:center;gap:14px;min-width:0}
+.wave-now-cover{width:72px;height:72px;flex:none;display:grid;place-items:center;border-radius:15px;overflow:hidden;background:linear-gradient(145deg,#1c6c4b,#0d2c1e);color:#b4ffd2;font-size:32px;box-shadow:0 6px 20px #0008}
+.wave-now-cover img{display:block;width:100%;height:100%;object-fit:cover}
+.wave-now-detail{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.wave-now-detail small:first-child{font-size:10px;letter-spacing:1.5px;font-weight:800;color:#76eeb0}
+.wave-now-detail strong{display:block;font-size:clamp(17px,3vw,23px)!important;line-height:1.2;letter-spacing:-.4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.wave-now-detail span{font-size:13px;color:#d0e6d6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wave-now-detail .wave-queue-count{font-size:11px;color:#8daf9a}
+.wave-now-actions{display:flex;gap:9px;align-items:center}
+.wave-now-actions button{flex:1;background:#183c29!important;border:1px solid #4d8961!important;border-radius:14px!important;padding:12px 14px!important;color:#d7ffe4!important;font-size:13px!important;font-weight:750}
+.wave-now-actions button:first-child{background:linear-gradient(125deg,#a7ffd0,#4deca2)!important;border-color:transparent!important;color:#07291a!important}
+#indie-embed iframe{width:100%;border-radius:15px!important;overflow:hidden}
+.music-grid{gap:13px!important}
+.indie-card-wrap{transition:border-color .2s,transform .2s}
+.indie-card-wrap:focus-within{border-color:#78ffb1!important}
+.indie-card-wrap .music-card{width:100%;display:flex;flex-direction:column;align-items:stretch}
+.indie-card-wrap .music-card img{display:block}
+.indie-card-wrap .music-card .music-open{font-size:12px;font-weight:750;color:#7cf2ae;margin-top:8px}
+.indie-card-wrap .playlist-picker:empty{display:none}
+#indie-toggle,#indie-more{border:1px solid #3a7452!important;background:#102b1d!important;color:#b9ffd5!important;border-radius:16px!important;padding:13px 18px!important}
+#indie-status{color:#a6b8ac}
+.top-nav a{transition:background .2s,color .2s}
+.top-nav a:focus-visible,.wave-now-actions button:focus-visible{outline:2px solid #a4ffcb;outline-offset:3px}
+@media(max-width:430px){#indie-embed{padding:13px!important}.wave-now-cover{width:60px;height:60px;border-radius:12px}.wave-now-info{gap:10px}.wave-now-detail strong{font-size:16px!important}.wave-now-actions button{padding:11px 6px!important;font-size:12px!important}}
+@media(prefers-reduced-motion:reduce){.indie-card-wrap,.top-nav a{transition:none!important}}
