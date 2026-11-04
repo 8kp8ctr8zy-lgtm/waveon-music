@@ -65,3 +65,5 @@
 #indie h2{font-size:25px!important;line-height:1.2!important}
 #indie .chip{font-size:10px!important}
 @media(max-width:420px){#indie-embed .wave-now-cover{width:48px!important;height:48px!important;min-width:48px!important;max-width:48px!important;flex-basis:48px!important}#indie-embed .wave-now-cover img{width:48px!important;height:48px!important}#indie-embed .wave-now-actions button{padding:8px!important;font-size:11px!important}.top-nav a{font-size:10px!important}}
+
+.top-nav a{letter-spacing:.1px!important}
